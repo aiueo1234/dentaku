@@ -14,11 +14,27 @@
 
 @implementation dentakuViewController
 
+@synthesize model;
+
+@synthesize input, inputdot, output, input2nd, input2nddot, result, dot, digitdot, pushcalculate, calculate;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self setState:0];
+    model=[[dentakuStateMachine alloc]init];
+    
+    input=0;
+    inputdot=0;
+    output=0;
+    input2nd=0;
+    input2nddot=0;
+    result=0;
+    dot=0;
+    digitdot=1;
+    
+    pushcalculate=0;
+    calculate=0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,185 +43,105 @@
     // Dispose of any resources that can be recreated.
 }
 
-double x=0;
-double xx=0;
-double s=0;
-double y=0;
-double yy=0;
-double A=0;
-int z=0;
-int n=1;
-
-int sisoku=0;
-int enzan=0;
 
 
-- (void)Button:(int)number{
-    switch(sisoku){
-        case 0:
-            if(z==0){
-                x=x*10+number;
-                [[self label]setText:[NSString stringWithFormat:@"%g",x]];
-            }
-            else{
-                xx=number*pow(10,(-n));
-                s=x+xx;
-                [[self label]setText:[NSString stringWithFormat:@"%g",s]];
-                x=s;
-                n=n+1;
-            }
-            break;
-            
-        case 1:
-            if(z==0){
-                y=y*10+number;
-                [[self label]setText:[NSString stringWithFormat:@"%g",y]];
-            }
-            else{
-                yy=number*pow(10,(-n));
-                s=y+yy;
-                [[self label]setText:[NSString stringWithFormat:@"%g",s]];
-                y=s;
-                n=n+1;
-            }
-            break;
-    }
+- (void)setTextToX{
+    input=[model funcX];
+    [[self label]setText:[NSString stringWithFormat:@"%g",input]];
+}
+
+- (void)setTextToS{
+    output=[model funcS];
+    [[self label]setText:[NSString stringWithFormat:@"%g",output]];
+}
+
+- (void)setTextToY{
+    input2nd=[model funcY];
+    [[self label]setText:[NSString stringWithFormat:@"%g",input2nd]];
 }
 
 
 
 
 - (IBAction)zero:(id)sender {
-    [self Button:0];
+    [model zero:sender controller:self];
 }
 
 - (IBAction)one:(id)sender {
-    [self Button:1];
+    [model one:sender controller:self];
 }
 
 - (IBAction)two:(id)sender {
-    [self Button:2];
+    [model two:sender controller:self];
 }
 
 - (IBAction)three:(id)sender {
-    [self Button:3];
+    [model three:sender controller:self];
 }
 
 - (IBAction)four:(id)sender {
-    [self Button:4];
+    [model four:sender controller:self];
 }
 
 - (IBAction)five:(id)sender {
-    [self Button:5];
+    [model five:sender controller:self];
 }
 
 - (IBAction)six:(id)sender {
-    [self Button:6];
+    [model six:sender controller:self];
 }
 
 - (IBAction)seven:(id)sender {
-    [self Button:7];
+    [model seven:sender controller:self];
 }
 
 - (IBAction)eight:(id)sender {
-    [self Button:8];
+    [model eight:sender controller:self];
 }
 
 - (IBAction)nine:(id)sender {
-    [self Button:9];
+    [model nine:sender controller:self];
 }
 
+- (void)setTextTo0{
+    [[self label]setText:[NSString stringWithFormat:@"%d",0]];
+}
 
 
 - (IBAction)wa:(id)sender {
-    [[self label]setText:[NSString stringWithFormat:@"%d",0]];
-    sisoku=1;
-    enzan=1;
-    s=0;
-    z=0;
-    n=1;
+    [model wa:sender controller:self];
 }
 
 - (IBAction)sa:(id)sender {
-    [[self label]setText:[NSString stringWithFormat:@"%d",0]];
-    sisoku=1;
-    enzan=2;
-    s=0;
-    z=0;
-    n=1;
+    [model sa:sender controller:self];
 }
 
 - (IBAction)kakeru:(id)sender {
-    [[self label]setText:[NSString stringWithFormat:@"%d",0]];
-    sisoku=1;
-    enzan=3;
-    s=0;
-    z=0;
-    n=1;
+    [model kakeru:sender controller:self];
 }
 
 - (IBAction)waru:(id)sender {
-    [[self label]setText:[NSString stringWithFormat:@"%d",0]];
-    sisoku=1;
-    enzan=4;
-    s=0;
-    z=0;
-    n=1;
+    [model waru:sender controller:self];
 }
 
 - (IBAction)syosu:(id)sender {
-    z=1;
+    [model syosu:sender controller:self];
 }
 
+
+- (void)setTextToA{
+    result=[model funcA];
+    [[self label]setText:[NSString stringWithFormat:@"%g",result]];
+}
+
+
 - (IBAction)kekka:(id)sender {
-    switch(enzan){
-        case 1:
-            A=y+x;
-            [[self label]setText:[NSString stringWithFormat:@"%g",A]];
-            sisoku=0;
-            enzan=0;
-            y=0;
-            x=A;
-            break;
-            
-        case 2:
-            A=x-y;
-            [[self label]setText:[NSString stringWithFormat:@"%g",A]];
-            sisoku=0;
-            enzan=0;
-            y=0;
-            x=A;
-            break;
-            
-        case 3:
-            A=x*y;
-            [[self label]setText:[NSString stringWithFormat:@"%g",A]];
-            sisoku=0;
-            enzan=0;
-            y=0;
-            x=A;
-            break;
-            
-        case 4:
-            A=x/y;
-            [[self label]setText:[NSString stringWithFormat:@"%g",A]];
-            sisoku=0;
-            enzan=0;
-            y=0;
-            x=A;
-            break;
-            
-    }
+
+    [model kekka:sender controller:self];
 }
 
 - (IBAction)clear:(id)sender {
-    x=0;
-    y=0;
-    z=0;
-    n=1;
-    sisoku=0;
-    enzan=0;
-    [[self label]setText:[NSString stringWithFormat:@"%d",0]];
+    [model clear:sender controller:self];
 }
 
 @end

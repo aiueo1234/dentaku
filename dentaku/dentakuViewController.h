@@ -7,11 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "dentakuStateMachine.h"
 
 @interface dentakuViewController : UIViewController{
 }
 
-@property enum {dentaku} state;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+
+@property dentakuStateMachine* model;
+
+
+@property double input;
+@property double inputdot;
+@property double output;
+@property double input2nd;
+@property double input2nddot;
+@property double result;
+@property int dot;
+@property int digitdot;
+
+@property int pushcalculate;
+@property int calculate;
 
 - (IBAction)zero:(id)sender;
 - (IBAction)one:(id)sender;
@@ -31,7 +47,13 @@
 - (IBAction)waru:(id)sender;
 - (IBAction)clear:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
+- (void)setTextToX;
+- (void)setTextToS;
+- (void)setTextToY;
+- (void)setTextTo0;
+- (void)setTextToA;
+
+
 
 
 @end

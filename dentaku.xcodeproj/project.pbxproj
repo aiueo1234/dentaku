@@ -23,6 +23,7 @@
 		0BA20352162D3D57005B4584 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BA2032D162D3D56005B4584 /* Foundation.framework */; };
 		0BA2035A162D3D57005B4584 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0BA20358162D3D57005B4584 /* InfoPlist.strings */; };
 		0BA2035D162D3D57005B4584 /* dentakuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2035C162D3D57005B4584 /* dentakuTests.m */; };
+		0BC84EF216A7CD4C00176918 /* dentakuStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC84EF116A7CD4C00176918 /* dentakuStateMachine.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		0BA20359162D3D57005B4584 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0BA2035B162D3D57005B4584 /* dentakuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dentakuTests.h; sourceTree = "<group>"; };
 		0BA2035C162D3D57005B4584 /* dentakuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dentakuTests.m; sourceTree = "<group>"; };
+		0BC84EF016A7CD4C00176918 /* dentakuStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dentakuStateMachine.h; sourceTree = "<group>"; };
+		0BC84EF116A7CD4C00176918 /* dentakuStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dentakuStateMachine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				0BA20343162D3D57005B4584 /* MainStoryboard.storyboard */,
 				0BA20346162D3D57005B4584 /* dentakuViewController.h */,
 				0BA20347162D3D57005B4584 /* dentakuViewController.m */,
+				0BC84EF016A7CD4C00176918 /* dentakuStateMachine.h */,
+				0BC84EF116A7CD4C00176918 /* dentakuStateMachine.m */,
 				0BA20332162D3D56005B4584 /* Supporting Files */,
 			);
 			path = dentaku;
@@ -274,6 +279,7 @@
 				0BA20338162D3D56005B4584 /* main.m in Sources */,
 				0BA2033C162D3D56005B4584 /* dentakuAppDelegate.m in Sources */,
 				0BA20348162D3D57005B4584 /* dentakuViewController.m in Sources */,
+				0BC84EF216A7CD4C00176918 /* dentakuStateMachine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +453,7 @@
 				0BA20362162D3D57005B4584 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0BA20363162D3D57005B4584 /* Build configuration list for PBXNativeTarget "dentakuTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +462,7 @@
 				0BA20365162D3D57005B4584 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
